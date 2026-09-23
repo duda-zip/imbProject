@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/*
+|--------------------------------------------------------------------------
+| base.css
+|--------------------------------------------------------------------------
+| Carregado por TODAS as páginas. Só entra aqui o que é realmente
+| compartilhado: cores, tipografia padrão, botões, navbar, rodapé e
+| utilitários de seção usados em mais de uma página.
+|
+| Conteúdo específico de cada página fica no CSS da própria página
+| (home.css, auth.css, curso.css, post.css...).
+|--------------------------------------------------------------------------
+*/
+
+:root{
+  --background:#fff;--foreground:#16223f;--card:#fff;--muted:#f5f7fa;--muted-text:#68758a;
+  --primary:#0E1B45;--primary-dark:#081029;--navy:#0E1B45;--gold:#F5B400;--gold-dark:#B37D00;--border:#e4e9f1;
+  --radius:18px;--shadow:0 8px 28px rgba(14,27,69,.07);--shadow-lift:0 20px 45px rgba(14,27,69,.13);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--foreground);background:var(--background);font-family:'Plus Jakarta Sans',Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.container{width:min(1200px,calc(100% - 40px));margin:auto}
+
+h1,h2,h3{letter-spacing:-.035em;line-height:1.12;margin:0}
+h2{font-size:clamp(30px,4vw,46px);font-weight:800}
+h3{font-size:18px}
+
+/* Navbar (inc/navbar.php) */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.45);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:.35s}
+.navbar.scrolled{background:rgba(255,255,255,.9);border-color:var(--border);box-shadow:var(--shadow)}
+.nav-container{height:80px;width:min(1200px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:.35s}
+.navbar.scrolled .nav-container{height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo-mark{display:block;width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.logo-text{font-size:16px}
+.desktop-nav{display:flex;align-items:center;gap:5px}
+.desktop-nav>a:not(.btn){padding:9px 14px;color:var(--muted-text);font-size:14px;font-weight:600}
+.desktop-nav>a:not(.btn):hover{color:var(--foreground)}
+.desktop-nav>a.nav-active,.mobile-menu>a.nav-active{color:var(--primary);position:relative}
+.desktop-nav>a.nav-active::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;border-radius:2px;background:var(--gold)}
+.nav-actions{gap:8px}
+.menu-button{display:none;background:#fff;border:1px solid var(--border);border-radius:11px;width:44px;height:44px;font-size:20px}
+.mobile-menu{display:none}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:11px;padding:10px 17px;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;transition:.25s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn-outline{border-color:var(--border);background:#fff;color:var(--foreground)}
+.btn-outline:hover{border-color:rgba(14,27,69,.35);color:var(--primary)}
+.btn-ghost{background:transparent}
+.btn-ghost:hover{background:var(--muted)}
+.btn-white{background:#fff;color:var(--primary)}
+.btn-large{padding:13px 20px;font-size:15px}
+.btn-block{width:100%}
+
+/* Utilitários de seção (usados em 2+ páginas) */
+.section{padding:105px 0}
+.section-muted{background:rgba(245,247,250,.7);border-block:1px solid var(--border)}
+.section-eyebrow{display:inline-flex;align-items:center;color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.section-heading{max-width:720px;margin:auto;text-align:center}
+.section-heading p{color:var(--muted-text);margin:15px auto 0;max-width:650px}
+.section-heading-left{max-width:640px;margin:0 0 32px;text-align:left}
+.section-heading-left p{color:var(--muted-text);margin:12px 0 0}
+
+/* Selo de status (cards de curso na Home + cabeçalho do curso) */
+.status{position:absolute;top:15px;left:15px;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.9);font-size:11px;font-weight:800;color:var(--muted-text)}
+.status.available{background:var(--gold);color:var(--navy)}
+
+/* Animação de entrada ao rolar */
+.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Rodapé (inc/footer.php) */
+.footer{background:#f7f8fa;border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:45px;padding:70px 0}
+.footer p,.footer a{font-size:13px;color:var(--muted-text)}
+.footer-grid>div>p{max-width:380px;margin-top:18px}
+.footer h3{font-size:14px;margin-bottom:15px}
+.footer-grid>div>a:not(.logo){display:block;margin:9px 0}
+.footer a:hover{color:var(--primary)}
+.footer-logo{color:var(--foreground)!important}
+.socials{display:flex;gap:12px;margin-top:20px}
+.socials a{padding:8px 11px;border:1px solid var(--border);border-radius:9px;background:#fff}
+.footer-bottom{border-top:1px solid var(--border)}
+.footer-bottom .container{display:flex;justify-content:space-between;gap:20px;padding:22px 0}
+.footer-bottom span{font-size:10px;color:var(--muted-text)}
+.footer-grid>div>p a{color:var(--muted-text)}
+.footer-grid>div>p a:hover{color:var(--primary)}
+.footer-contact-link{display:inline-block;margin-top:14px;font-weight:700;color:var(--primary)!important}
+
+/*
+|--------------------------------------------------------------------------
+| Acessibilidade
+|--------------------------------------------------------------------------
+*/
+
+/* Visível só para leitores de tela. Não use display:none —
+   isso removeria o elemento da leitura também. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Atalho "pular para o conteúdo": fica escondido até receber foco */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--primary);
+  color:#fff;padding:12px 18px;border-radius:0 0 11px 0;font-weight:700;font-size:14px}
+.skip-link:focus{left:0}
+
+/* Indicador de foco. :focus-visible só aparece na navegação por teclado,
+   não no clique do mouse. */
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* Respeita quem desativou animações no sistema operacional */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
+@media(max-width:1000px){
+    .desktop-nav{display:none}
+    .menu-button{display:block}
+        /* visibility:hidden tira os links do alcance do teclado.
+       O delay de .35s espera a animação terminar antes de esconder. */
+    .mobile-menu{overflow:hidden;max-height:0;opacity:0;visibility:hidden;
+      background:rgba(255,255,255,.97);border-top:1px solid var(--border);
+      transition:max-height .35s,opacity .35s,padding .35s,visibility 0s linear .35s;padding:0 20px}
+    .mobile-menu.open{max-height:500px;opacity:1;visibility:visible;padding:15px 20px;transition-delay:0s}
+    .mobile-menu>a{display:block;padding:11px 5px;color:var(--muted-text);font-weight:600}
+    .mobile-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .footer-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:650px){
+    .container,.nav-container{width:min(100% - 28px,1200px)}
+    .section{padding:72px 0}
+    .footer-grid{grid-template-columns:1fr}
+    .footer-grid>div:first-child{grid-column:auto}
+    .footer-bottom .container{flex-direction:column}
+}

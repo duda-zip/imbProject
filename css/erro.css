@@ -1,0 +1,43 @@
+/*
+|--------------------------------------------------------------------------
+| erro.css
+|--------------------------------------------------------------------------
+| Estilos da 404.php. Depende de base.css (variáveis, .container, .btn).
+| Layout em flex-column para o rodapé grudar embaixo mesmo com pouco
+| conteúdo — sem isso ele ficaria flutuando no meio da tela.
+|--------------------------------------------------------------------------
+*/
+
+.error-body{min-height:100vh;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(245,247,250,.85),var(--background) 55%)}
+
+.error-topbar{padding:24px 0}
+.error-main{flex:1;display:flex;align-items:center;padding:40px 0 80px}
+.error-content{max-width:760px;margin:auto;text-align:center}
+
+/* O número grande fica atrás do título, com opacidade baixa */
+.error-code{display:block;font-size:clamp(110px,20vw,190px);font-weight:800;line-height:.85;
+  letter-spacing:-.06em;color:var(--navy);opacity:.09;margin-bottom:-26px;user-select:none}
+
+.error-content h1{font-size:clamp(27px,4vw,42px);font-weight:800;position:relative}
+.error-text{color:var(--muted-text);font-size:15.5px;max-width:520px;margin:16px auto 0;line-height:1.65}
+
+.error-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+.error-links{margin-top:60px;padding-top:44px;border-top:1px solid var(--border)}
+.error-links h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-text)}
+.error-links-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px;text-align:left}
+
+.error-link-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:19px 21px;box-shadow:var(--shadow);transition:.25s}
+.error-link-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);border-color:rgba(14,27,69,.22)}
+.error-link-card strong{display:block;font-size:14.5px;font-weight:700;margin-bottom:4px}
+.error-link-card span{display:block;font-size:12.5px;color:var(--muted-text);line-height:1.5}
+
+.error-footer{border-top:1px solid var(--border);padding:22px 0;text-align:center}
+.error-footer span{font-size:11px;color:var(--muted-text)}
+
+@media(max-width:650px){
+    .error-links-grid{grid-template-columns:1fr}
+    .error-actions .btn{width:100%}
+    .error-links{margin-top:44px;padding-top:32px}
+}

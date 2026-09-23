@@ -1,0 +1,6 @@
+# Pagina de erro personalizada.
+# O caminho e a partir da raiz do servidor (htdocs), nao da pasta do projeto.
+ErrorDocument 404 /IMB-Educacao-PHP/404.php
+
+# Impede que o Apache liste o conteudo de pastas sem index.
+Options -Indexes
